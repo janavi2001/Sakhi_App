@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakhi/screens/HealthForm/healthform.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -54,6 +55,38 @@ class _BodyState extends State<Body> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+              ),
+              child: Text('SAKHI'),
+            ),
+            ListTile(
+              title: Text('My Profile?'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Logout'),
+              onTap: () {
+                //Add logout function here
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: new AppBar(centerTitle: true, title: _appBarTitle, actions: [
         IconButton(
           icon: _searchIcon,
@@ -66,7 +99,14 @@ class _BodyState extends State<Body> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add health details form page here!
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return HealthForm(); //ADD PERSONALFORM() HERE
+              },
+            ),
+          );
         },
         child: const Icon(Icons.add),
         backgroundColor: Colors.yellow,
@@ -90,19 +130,28 @@ class _BodyState extends State<Body> {
       filteredNames = tempList; //update the fitered list
     }
     return ListView.builder(
-      itemCount: names == null ? 0 : filteredNames.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Card(
+        itemCount: names == null ? 0 : filteredNames.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
             //each patient displayed in a new card
             elevation: 4,
             child: ListTile(
               title: Text(filteredNames[index]),
               subtitle: Text("Click for health details"), //can change this
               trailing: Icon(Icons.keyboard_arrow_right_sharp),
-              onTap: () => print(filteredNames[index]),
-            ));
-      },
-    );
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return HealthForm();
+                    },
+                  ),
+                );
+              },
+            ),
+          );
+        });
   }
 
   void _searchPressed() {

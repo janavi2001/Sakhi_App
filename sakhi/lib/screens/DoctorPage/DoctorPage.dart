@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sakhi/screens/DoctorPage/body.dart';
 
-void main() => runApp(new MyApp());
+//void main() => runApp(new MyApp());
 
-class MyApp extends StatelessWidget {
+class DoctorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: new Body(),
+      home: Body(),
     );
   }
 }

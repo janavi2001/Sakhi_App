@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import './body.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget{
+class HealthForm extends StatelessWidget {
   @override //overriding the method
   Widget build(BuildContext context) {
-    
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.yellow),
-      home: HealthScreen());
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primaryColor: Colors.yellow),
+        home: HealthScreen());
   }
 }

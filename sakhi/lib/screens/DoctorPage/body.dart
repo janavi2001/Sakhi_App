@@ -55,6 +55,38 @@ class _BodyState extends State<Body> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+              ),
+              child: Text('SAKHI'),
+            ),
+            ListTile(
+              title: Text('My Profile?'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Logout'),
+              onTap: () {
+                //Add logout function here
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: new AppBar(centerTitle: true, title: _appBarTitle, actions: [
         IconButton(
           icon: _searchIcon,
@@ -90,11 +122,13 @@ class _BodyState extends State<Body> {
             //each patient displayed in a new card
             elevation: 4,
             child: ListTile(
-              title: Text(filteredNames[index]),
-              subtitle: Text("Click for health details"), //can change this
-              trailing: Icon(Icons.keyboard_arrow_right_sharp),
-              onTap: () => print(filteredNames[index]),
-            ));
+                title: Text(filteredNames[index]),
+                subtitle: Text("Click for health details"), //can change this
+                trailing: Icon(Icons.keyboard_arrow_right_sharp),
+                onTap: () {
+                  //ADD PRESCRIPTION FROM HERE!!!!!!!!!!!!!
+                  print(filteredNames[index]);
+                }));
       },
     );
   }

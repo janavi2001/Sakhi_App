@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-
 class HealthScreen extends StatefulWidget {
   @override
   _HealthScreenState createState() => _HealthScreenState();
 }
 
 class _HealthScreenState extends State<HealthScreen> {
-  
   late String _temp;
   late String _blood;
   late String _bp;
@@ -17,7 +15,7 @@ class _HealthScreenState extends State<HealthScreen> {
   late String _hbcounts;
   late String _oxygen;
   late String _weight;
-  
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildTp() {
@@ -39,20 +37,14 @@ class _HealthScreenState extends State<HealthScreen> {
     );
   }
 
-    
-  
-
   Widget _buildBg() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Blood Group'),
       keyboardType: TextInputType.name,
       validator: (value) {
-        
         if (value!.isEmpty) {
           return 'Blood group is Required';
         }
-
-        
 
         return null;
       },
@@ -61,7 +53,6 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
 
   Widget _buildBp() {
     return TextFormField(
@@ -81,16 +72,15 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
 
-   Widget _buildSugar() {
+  Widget _buildSugar() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Sugar'),
       keyboardType: TextInputType.number,
       validator: (value) {
         int? calories = int.tryParse(value!);
 
-        if (calories == null || calories <=0 ) {
+        if (calories == null || calories <= 0) {
           return 'Enter the Sugar';
         }
 
@@ -101,9 +91,8 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
-  
-   Widget _buildDisability() {
+
+  Widget _buildDisability() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Disability'),
       keyboardType: TextInputType.name,
@@ -119,7 +108,6 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
 
   Widget _buildPulse() {
     return TextFormField(
@@ -139,8 +127,6 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
-
 
   Widget _buildHbcounts() {
     return TextFormField(
@@ -160,8 +146,6 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
-  
 
   Widget _buildOxygen() {
     return TextFormField(
@@ -181,7 +165,6 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
 
   Widget _buildWeight() {
     return TextFormField(
@@ -202,40 +185,48 @@ class _HealthScreenState extends State<HealthScreen> {
       },
     );
   }
-  
 
-
-
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Health Details')),
-      body: Container(
-        margin: EdgeInsets.all(24),
-        child: Form(child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _buildTp(),
-          _buildBg(),
-          _buildBp(),
-          _buildDisability(),
-          _buildHbcounts(),
-          _buildOxygen(),
-          _buildPulse(),
-          _buildSugar(),
-          _buildWeight(),
-          //SizedBox(height: 100),
-          RaisedButton(
-            child: Text('Submit', style: TextStyle(color: Colors.blue, fontSize: 16,),
+        appBar: AppBar(
+            title: Text('Health Details'),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context); //Fix this action!!!!!!!!!!!
+              },
+            )),
+        body: SingleChildScrollView(
+            child: Container(
+          margin: EdgeInsets.all(24),
+          child: Form(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildTp(),
+                _buildBg(),
+                _buildBp(),
+                _buildDisability(),
+                _buildHbcounts(),
+                _buildOxygen(),
+                _buildPulse(),
+                _buildSugar(),
+                _buildWeight(),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  child: Text(
+                    'Submit Health Details',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  onPressed: () => {}, //details added through firebase here
+                )
+              ],
             ),
-            onPressed: () => {}
-          ,)
-
-
-        ],),),
-      )
-      
-    );
+          ),
+        )));
   }
 }
