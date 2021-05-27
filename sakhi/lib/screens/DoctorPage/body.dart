@@ -59,14 +59,20 @@ class _BodyState extends State<Body> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.yellow,
+            UserAccountsDrawerHeader(
+              accountName: Text("Doctor Name"),
+              accountEmail: Text("Doctor unique ID"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: ExactAssetImage("../assets/images/avatar.png"),
+                backgroundColor:
+                    Theme.of(context).platform == TargetPlatform.iOS
+                        ? Colors.yellow
+                        : Colors.white,
               ),
-              child: Text('SAKHI'),
             ),
             ListTile(
               title: Text('My Profile?'),
+              trailing: Icon(Icons.arrow_forward),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -76,6 +82,7 @@ class _BodyState extends State<Body> {
             ),
             ListTile(
               title: Text('Logout'),
+              trailing: Icon(Icons.arrow_forward),
               onTap: () {
                 //Add logout function here
                 // Update the state of the app
