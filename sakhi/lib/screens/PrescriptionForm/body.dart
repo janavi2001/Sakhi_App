@@ -20,6 +20,9 @@ class _BodyState extends State<Body> {
 
   Widget _buildTp() {
     return TextFormField(
+      enabled: false,
+      enableInteractiveSelection: false, // will disable paste operation
+      focusNode: new AlwaysDisabledFocusNode(),
       decoration: InputDecoration(labelText: 'Body Temperature'),
       keyboardType: TextInputType.number,
       validator: (value) {
@@ -226,4 +229,9 @@ class _BodyState extends State<Body> {
           ),
         )));
   }
+}
+
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }

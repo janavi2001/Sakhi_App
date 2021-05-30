@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakhi/screens/PrescriptionForm/PrescriptionForm.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -129,13 +130,20 @@ class _BodyState extends State<Body> {
             //each patient displayed in a new card
             elevation: 4,
             child: ListTile(
-                title: Text(filteredNames[index]),
-                subtitle: Text("Click for health details"), //can change this
-                trailing: Icon(Icons.keyboard_arrow_right_sharp),
-                onTap: () {
-                  //ADD PRESCRIPTION FROM HERE!!!!!!!!!!!!!
-                  print(filteredNames[index]);
-                }));
+              title: Text(filteredNames[index]),
+              subtitle: Text("Click for health details"), //can change this
+              trailing: Icon(Icons.keyboard_arrow_right_sharp),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PrescriptionForm();
+                    },
+                  ),
+                );
+              },
+            ));
       },
     );
   }

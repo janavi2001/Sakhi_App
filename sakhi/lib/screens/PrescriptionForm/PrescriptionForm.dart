@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sakhi/screens/PrescriptionForm/body.dart';
 import './body.dart';
 
-class HealthForm extends StatelessWidget {
-  @override 
+class PrescriptionForm extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
